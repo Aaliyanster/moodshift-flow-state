@@ -1,35 +1,35 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Calendar, Flame, Target } from 'lucide-react';
+import { TrendingUp, Calendar, Flame, Heart } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const moodData = [
-  { date: 'Mon', mood: 3, activity: 2 },
-  { date: 'Tue', mood: 4, activity: 3 },
-  { date: 'Wed', mood: 2, activity: 1 },
-  { date: 'Thu', mood: 4, activity: 4 },
-  { date: 'Fri', mood: 5, activity: 3 },
-  { date: 'Sat', mood: 4, activity: 4 },
-  { date: 'Sun', mood: 5, activity: 4 },
+  { date: 'Mon', mood: 2, consistency: 1 },
+  { date: 'Tue', mood: 3, consistency: 1 },
+  { date: 'Wed', mood: 2, consistency: 1 },
+  { date: 'Thu', mood: 4, consistency: 1 },
+  { date: 'Fri', mood: 4, consistency: 1 },
+  { date: 'Sat', mood: 3, consistency: 1 },
+  { date: 'Sun', mood: 4, consistency: 1 },
 ];
 
-const streakData = [
-  { week: 'Week 1', checkins: 5 },
-  { week: 'Week 2', checkins: 7 },
-  { week: 'Week 3', checkins: 6 },
-  { week: 'Week 4', checkins: 7 },
+const consistencyData = [
+  { week: 'Week 1', days: 6 },
+  { week: 'Week 2', days: 7 },
+  { week: 'Week 3', days: 5 },
+  { week: 'This Week', days: 4 },
 ];
 
-const Progress = () => {
-  const [activeTab, setActiveTab] = useState<'mood' | 'streaks'>('mood');
+const ProgressTracker = () => {
+  const [activeTab, setActiveTab] = useState<'mood' | 'consistency'>('mood');
 
   return (
-    <Card className="w-full shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="w-full shadow-lg border-0 bg-card/80 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="flex items-center space-x-2 text-gray-800">
+        <CardTitle className="flex items-center space-x-2 text-card-foreground">
           <TrendingUp className="h-6 w-6 text-purple-500" />
-          <span>Your Progress</span>
+          <span>Your Real Progress</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -38,9 +38,10 @@ const Progress = () => {
           <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-4 text-white">
             <div className="flex items-center space-x-2">
               <Flame className="h-5 w-5" />
-              <span className="text-sm font-medium">Current Streak</span>
+              <span className="text-sm font-medium">Consistency Streak</span>
             </div>
-            <p className="text-2xl font-bold mt-1">7 days</p>
+            <p className="text-2xl font-bold mt-1">22 days</p>
+            <p className="text-xs opacity-80">You haven't quit yet!</p>
           </div>
           
           <div className="bg-gradient-to-r from-green-500 to-blue-500 rounded-lg p-4 text-white">
@@ -49,38 +50,40 @@ const Progress = () => {
               <span className="text-sm font-medium">Check-ins</span>
             </div>
             <p className="text-2xl font-bold mt-1">25 total</p>
+            <p className="text-xs opacity-80">Every check-in matters</p>
           </div>
           
           <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-4 text-white">
             <div className="flex items-center space-x-2">
-              <Target className="h-5 w-5" />
-              <span className="text-sm font-medium">Avg Mood</span>
+              <Heart className="h-5 w-5" />
+              <span className="text-sm font-medium">Mood Trend</span>
             </div>
-            <p className="text-2xl font-bold mt-1">4.1/5</p>
+            <p className="text-2xl font-bold mt-1">↗️ Up</p>
+            <p className="text-xs opacity-80">You're getting stronger</p>
           </div>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-4 border-b border-gray-200">
+        <div className="flex space-x-4 border-b">
           <button
             onClick={() => setActiveTab('mood')}
             className={`pb-2 px-1 font-medium transition-colors ${
               activeTab === 'mood'
                 ? 'text-blue-600 border-b-2 border-blue-600'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            Mood & Activity
+            Mood Progress
           </button>
           <button
-            onClick={() => setActiveTab('streaks')}
+            onClick={() => setActiveTab('consistency')}
             className={`pb-2 px-1 font-medium transition-colors ${
-              activeTab === 'streaks'
+              activeTab === 'consistency'
                 ? 'text-blue-600 border-b-2 border-blue-600'
-                : 'text-gray-500 hover:text-gray-700'
+                : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            Weekly Streaks
+            Consistency Wins
           </button>
         </div>
 
@@ -89,13 +92,13 @@ const Progress = () => {
           {activeTab === 'mood' ? (
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={moodData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="date" stroke="#6b7280" />
-                <YAxis domain={[1, 5]} stroke="#6b7280" />
+                <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+                <XAxis dataKey="date" className="text-muted-foreground" />
+                <YAxis domain={[1, 5]} className="text-muted-foreground" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px'
                   }}
                 />
@@ -105,33 +108,25 @@ const Progress = () => {
                   stroke="#3b82f6" 
                   strokeWidth={3}
                   dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
-                  name="Mood"
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="activity" 
-                  stroke="#10b981" 
-                  strokeWidth={3}
-                  dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
-                  name="Activity"
+                  name="Mood Level"
                 />
               </LineChart>
             </ResponsiveContainer>
           ) : (
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={streakData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="week" stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
+              <BarChart data={consistencyData}>
+                <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+                <XAxis dataKey="week" className="text-muted-foreground" />
+                <YAxis className="text-muted-foreground" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'white', 
-                    border: '1px solid #e5e7eb',
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
                     borderRadius: '8px'
                   }}
                 />
                 <Bar 
-                  dataKey="checkins" 
+                  dataKey="days" 
                   fill="url(#colorGradient)"
                   radius={[4, 4, 0, 0]}
                 />
@@ -146,9 +141,9 @@ const Progress = () => {
           )}
         </div>
 
-        <div className="text-center">
-          <p className="text-sm text-gray-600">
-            Consistency is key! Keep up your daily check-ins to build lasting habits.
+        <div className="text-center bg-muted/50 rounded-lg p-4">
+          <p className="text-sm text-muted-foreground font-medium">
+            💡 <strong>Remember:</strong> Your consistency is the result that matters most right now. Physical changes are coming—your mental strength is already here.
           </p>
         </div>
       </CardContent>
@@ -156,4 +151,4 @@ const Progress = () => {
   );
 };
 
-export default Progress;
+export default ProgressTracker;

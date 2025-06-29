@@ -17,7 +17,7 @@ const JournalChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi there! I'm here to listen and support you. How can I help you process your thoughts and feelings today?",
+      text: "I'm your fitness mindset coach. I know the struggle when you're doing everything right but results aren't showing yet. That's exactly where most people quit—but not you. What's weighing on your mind today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -25,12 +25,13 @@ const JournalChat = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const aiResponses = [
-    "I understand that feeling. It's completely normal to experience ups and downs. What do you think might help you feel more grounded right now?",
-    "Thank you for sharing that with me. Your feelings are valid. Have you noticed any patterns in what triggers these emotions?",
-    "It takes courage to acknowledge how you're feeling. What's one small thing you could do today to show yourself kindness?",
-    "I hear you. Sometimes movement can help shift our emotional state. Would a gentle walk or some breathing exercises feel helpful right now?",
-    "Your awareness of your emotions is already a strength. What activities have helped you feel better in the past?",
+  const coachingResponses = [
+    "This is the part where champions are made. Week 2-4 is when your body is building the foundation. Results are coming, but your consistency right now is the real victory.",
+    "I hear the frustration. You're in what I call 'the invisible progress zone'—your body is changing internally before you see it externally. Don't let the mirror lie to you about your progress.",
+    "Most people quit right where you are now. But you're still here, still asking questions, still trying. That mental strength you're building? That's worth more than any quick result.",
+    "Your body is not a machine with instant results. It's rebuilding itself cell by cell. Trust the process, and let's focus on how you FEEL—stronger, more energetic, sleeping better?",
+    "The scale and mirror can be liars, but your effort is always honest. Let's celebrate what you CAN control: showing up, staying consistent, and not giving up when it gets hard.",
+    "This plateau feeling? It's actually your body getting ready to breakthrough. Keep doing what you're doing. Results lag behind effort, but they never forget to show up.",
   ];
 
   const handleSendMessage = async () => {
@@ -47,29 +48,28 @@ const JournalChat = () => {
     setInputMessage('');
     setIsTyping(true);
 
-    // Simulate AI response
     setTimeout(() => {
-      const aiResponse: Message = {
+      const coachResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: aiResponses[Math.floor(Math.random() * aiResponses.length)],
+        text: coachingResponses[Math.floor(Math.random() * coachingResponses.length)],
         isUser: false,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages(prev => [...prev, coachResponse]);
       setIsTyping(false);
     }, 1500);
   };
 
   return (
-    <Card className="w-full shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="w-full shadow-lg border-0 bg-card/80 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="flex items-center space-x-2 text-gray-800">
-          <MessageCircle className="h-6 w-6 text-blue-500" />
-          <span>AI Journal Companion</span>
+        <CardTitle className="flex items-center space-x-2 text-card-foreground">
+          <MessageCircle className="h-6 w-6 text-green-500" />
+          <span>Your Mindset Coach</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <ScrollArea className="h-80 w-full rounded-lg border border-gray-200 p-4">
+        <ScrollArea className="h-80 w-full rounded-lg border p-4">
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -93,7 +93,7 @@ const JournalChat = () => {
                   className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                     message.isUser
                       ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-800'
+                      : 'bg-muted text-foreground'
                   }`}
                 >
                   <p className="text-sm">{message.text}</p>
@@ -105,11 +105,11 @@ const JournalChat = () => {
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
                   <Bot className="h-4 w-4 text-white" />
                 </div>
-                <div className="bg-gray-100 px-4 py-2 rounded-lg">
+                <div className="bg-muted px-4 py-2 rounded-lg">
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                   </div>
                 </div>
               </div>
@@ -119,16 +119,16 @@ const JournalChat = () => {
         
         <div className="flex space-x-2">
           <Input
-            placeholder="Share your thoughts..."
+            placeholder="I feel like giving up because..."
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            className="flex-1 border-gray-200 focus:border-blue-500"
+            className="flex-1"
           />
           <Button
             onClick={handleSendMessage}
             size="icon"
-            className="bg-blue-500 hover:bg-blue-600"
+            className="bg-green-500 hover:bg-green-600"
           >
             <Send className="h-4 w-4" />
           </Button>
