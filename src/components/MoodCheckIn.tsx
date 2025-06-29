@@ -28,9 +28,9 @@ const MoodCheckIn = () => {
   };
 
   return (
-    <Card className="w-full shadow-lg border-0 bg-white/80 backdrop-blur-sm">
+    <Card className="w-full shadow-lg border-0 bg-card/80 backdrop-blur-sm">
       <CardHeader>
-        <CardTitle className="flex items-center space-x-2 text-gray-800">
+        <CardTitle className="flex items-center space-x-2 text-card-foreground">
           <Heart className="h-6 w-6 text-pink-500" />
           <span>How are you feeling today?</span>
         </CardTitle>
@@ -45,8 +45,8 @@ const MoodCheckIn = () => {
                 onClick={() => setSelectedMood(mood.value)}
                 className={`p-4 rounded-xl border-2 transition-all duration-200 hover:scale-105 ${
                   selectedMood === mood.value
-                    ? 'border-blue-500 bg-blue-50 shadow-md'
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-950 shadow-md'
+                    : 'border-border hover:border-muted-foreground'
                 }`}
               >
                 <div className="text-3xl mb-2">{mood.emoji}</div>
@@ -59,14 +59,14 @@ const MoodCheckIn = () => {
         </div>
 
         <div className="space-y-3">
-          <label className="text-sm font-medium text-gray-700">
+          <label className="text-sm font-medium text-muted-foreground">
             Optional: Share what's on your mind (private & safe)
           </label>
           <Textarea
             placeholder="I'm feeling this way because..."
             value={journalEntry}
             onChange={(e) => setJournalEntry(e.target.value)}
-            className="min-h-[100px] border-gray-200 focus:border-blue-500 resize-none"
+            className="min-h-[100px] resize-none"
           />
         </div>
 
