@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Heart, Brain, Activity, TrendingUp, Compass } from 'lucide-react';
+import { Heart, Activity, TrendingUp, Compass } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
+import brainLogo from '@/assets/brain-logo.png';
 
 const Navigation = () => {
   return (
@@ -9,7 +10,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+            <img 
+              src={brainLogo} 
+              alt="MoodShift Brain Logo" 
+              className="h-10 w-10 animate-pulse hover:animate-bounce transition-all duration-300 cursor-pointer"
+            />
             <span className="text-xl font-bold text-foreground">MoodShift</span>
           </div>
           
