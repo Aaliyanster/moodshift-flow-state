@@ -2,19 +2,13 @@
 import React from 'react';
 import { Heart, Activity, TrendingUp, Compass } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
-import brainLogo from '@/assets/brain-logo.png';
 
 const Navigation = () => {
   return (
     <nav className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center space-x-2">
-            <img 
-              src={brainLogo} 
-              alt="MoodShift Brain Logo" 
-              className="h-8 w-8"
-            />
+          <div className="flex items-center">
             <span className="text-xl font-bold text-foreground">MoodShift</span>
           </div>
           
