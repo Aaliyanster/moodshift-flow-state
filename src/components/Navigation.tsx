@@ -2,7 +2,7 @@
 import React from 'react';
 import { Heart, Activity, TrendingUp, Compass } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
-import brainLogo from '@/assets/brain-logo.png';
+import brainLogo from '@/assets/brain-logo-simple.png';
 
 const Navigation = () => {
   return (
@@ -13,7 +13,7 @@ const Navigation = () => {
             <img 
               src={brainLogo} 
               alt="MoodShift Brain Logo" 
-              className="h-10 w-10 animate-pulse hover:animate-bounce transition-all duration-300 cursor-pointer"
+              className="h-8 w-8"
             />
             <span className="text-xl font-bold text-foreground">MoodShift</span>
           </div>
