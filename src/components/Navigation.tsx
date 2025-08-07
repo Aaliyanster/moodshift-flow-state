@@ -2,7 +2,7 @@
 import React from 'react';
 import { Heart, Activity, TrendingUp, Compass } from 'lucide-react';
 import ThemeToggle from '@/components/ThemeToggle';
-import brainLogo from '@/assets/brain-logo-simple.png';
+import brainLogo from '@/assets/brain-logo.png';
 
 const Navigation = () => {
   return (
