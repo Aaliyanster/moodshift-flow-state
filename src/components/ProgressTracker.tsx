@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, Calendar, Flame, Heart } from 'lucide-react';
+import { TrendingUp, Calendar, Flame, Heart, Scale } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const moodData = [
@@ -21,8 +21,18 @@ const consistencyData = [
   { week: 'This Week', days: 4 },
 ];
 
+const weightData = [
+  { date: 'Mon', weight: 180 },
+  { date: 'Tue', weight: 179.5 },
+  { date: 'Wed', weight: 179 },
+  { date: 'Thu', weight: 178.8 },
+  { date: 'Fri', weight: 178.5 },
+  { date: 'Sat', weight: 178.2 },
+  { date: 'Sun', weight: 178 },
+];
+
 const ProgressTracker = () => {
-  const [activeTab, setActiveTab] = useState<'mood' | 'consistency'>('mood');
+  const [activeTab, setActiveTab] = useState<'mood' | 'consistency' | 'weight'>('mood');
 
   return (
     <Card className="w-full shadow-lg border-0 bg-card/80 backdrop-blur-sm">
@@ -76,6 +86,16 @@ const ProgressTracker = () => {
             Mood Progress
           </button>
           <button
+            onClick={() => setActiveTab('weight')}
+            className={`pb-2 px-1 font-medium transition-colors ${
+              activeTab === 'weight'
+                ? 'text-blue-600 border-b-2 border-blue-600'
+                : 'text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Weight Progress
+          </button>
+          <button
             onClick={() => setActiveTab('consistency')}
             className={`pb-2 px-1 font-medium transition-colors ${
               activeTab === 'consistency'
@@ -109,6 +129,29 @@ const ProgressTracker = () => {
                   strokeWidth={3}
                   dot={{ fill: '#3b82f6', strokeWidth: 2, r: 4 }}
                   name="Mood Level"
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          ) : activeTab === 'weight' ? (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={weightData}>
+                <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+                <XAxis dataKey="date" className="text-muted-foreground" />
+                <YAxis className="text-muted-foreground" />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: 'hsl(var(--card))', 
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '8px'
+                  }}
+                />
+                <Line 
+                  type="monotone" 
+                  dataKey="weight" 
+                  stroke="#10b981" 
+                  strokeWidth={3}
+                  dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+                  name="Weight (lbs)"
                 />
               </LineChart>
             </ResponsiveContainer>
