@@ -8,7 +8,7 @@ import ProgressTracker from '@/components/ProgressTracker';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-transparent">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
@@ -16,7 +16,7 @@ const Index = () => {
             <img 
               src="/lovable-uploads/0770f839-9d0d-4b16-8b97-b81e1a5f40da.png" 
               alt="Brain Workout Character" 
-              className="w-32 h-32 md:w-40 md:h-40 animate-pulse"
+              className="w-32 h-32 md:w-40 md:h-40"
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-green-500 to-purple-600 dark:from-blue-400 dark:via-green-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
