@@ -8,7 +8,8 @@ const Navigation = () => {
     <nav className="bg-background/80 backdrop-blur-md border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            <img src="/lovable-uploads/a82b4a04-a553-4f6c-8385-1c8482f4daec.png" alt="MoodShift Brain Logo" className="h-8 w-8" />
             <span className="text-xl font-bold text-foreground">MoodShift</span>
           </div>
           
