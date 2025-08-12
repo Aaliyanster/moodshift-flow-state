@@ -14,7 +14,7 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-6">
             <img 
-              src="/lovable-uploads/0e0470aa-8ef3-4419-a08b-03e3d759d104.png" 
+              src="/lovable-uploads/b8efcccd-aae5-4a90-a90b-51756c77cf63.png" 
               alt="Brain Workout Character" 
               className="w-32 h-32 md:w-40 md:h-40 animate-pulse filter hue-rotate-[220deg] saturate-150 brightness-110"
             />
