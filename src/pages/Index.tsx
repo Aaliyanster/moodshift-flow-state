@@ -8,7 +8,7 @@ import ProgressTracker from '@/components/ProgressTracker';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+    <div className="min-h-screen bg-transparent">
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
