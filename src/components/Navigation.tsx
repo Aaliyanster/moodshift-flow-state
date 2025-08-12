@@ -9,7 +9,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <img src="/lovable-uploads/f00e0db5-13cf-4417-b4ae-924902a189d4.png" alt="MoodShift Brain Logo" className="h-8 w-8" />
+            <img src="/lovable-uploads/0e0470aa-8ef3-4419-a08b-03e3d759d104.png" alt="MoodShift Brain Logo" className="h-8 w-8" />
             <span className="text-xl font-bold text-foreground">MoodShift</span>
           </div>
           
