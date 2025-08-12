@@ -14,9 +14,9 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-6">
             <img 
-              src="/lovable-uploads/b8efcccd-aae5-4a90-a90b-51756c77cf63.png" 
+              src="/lovable-uploads/0770f839-9d0d-4b16-8b97-b81e1a5f40da.png" 
               alt="Brain Workout Character" 
-              className="w-32 h-32 md:w-40 md:h-40 animate-pulse filter hue-rotate-[220deg] saturate-150 brightness-110"
+              className="w-32 h-32 md:w-40 md:h-40 animate-pulse"
             />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-green-500 to-purple-600 dark:from-blue-400 dark:via-green-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
