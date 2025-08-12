@@ -12,6 +12,13 @@ const Index = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="text-center mb-8">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/lovable-uploads/0e0470aa-8ef3-4419-a08b-03e3d759d104.png" 
+              alt="Brain Workout Character" 
+              className="w-32 h-32 md:w-40 md:h-40 animate-pulse"
+            />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 via-green-500 to-purple-600 dark:from-blue-400 dark:via-green-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
             MoodShift
           </h1>
